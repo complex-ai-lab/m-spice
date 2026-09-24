@@ -1,0 +1,12 @@
+epiweeks==2.3.0
+matplotlib==3.8.4
+numpy==1.26.4
+pandas==2.1.4
+Pillow==10.3.0
+PyYAML==6.0.2
+scikit-learn==1.3.2
+scipy==1.11.4
+statsmodels==0.14.4
+torch==2.5.1
+torchvision==0.20.1
+tqdm==4.67.1

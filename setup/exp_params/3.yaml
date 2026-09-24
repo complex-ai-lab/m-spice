@@ -1,0 +1,63 @@
+dataset: multimodal_covid
+target: covid_hospitalizations # targets: percent_ili, flu_hospitalizations, covid_hospitalizations
+data_name: covid #covid, flu, percent_ili #name of the experiment folder to be saved in results
+
+exp_id: 3
+data_id: 3
+test_time: 202412 # should be 4 timesteps before the last date
+pred_starting_time: 202340 #want to start predicting the epi year before test_time
+
+# over-writing parameters
+model_variant:  best_model_00_11_ts_pe
+description: covid
+temp_dir: ../../data/temperature_new
+hum_dir: ../../data/cch_new
+
+model_name: ts_img_jointattn
+pool: last
+
+model_parameters:
+  hidden_dim: 128
+  num_heads: 4
+  dropout: 0.1
+
+  # temporal encoder depth (stage 1)
+  ts_layers: 2
+  ts_heads: 4
+
+  # joint attention depth (stage 2)
+  joint_layers: 1
+  joint_heads: 4
+
+  img_emb_dim: 512
+  use_meta: true
+
+training_parameters:
+  batch_size: 32
+  epochs: 200
+  lr: 0.0003
+  gamma: 0.1
+  patience: 50
+
+device: cuda:0
+
+aheads: [1, 2, 3, 4]
+smooth: False
+fix_window: True # False will train on the entire sequence or curve
+true_scale: True
+total_steps: 1000   
+skip_beginning: 0
+multi_seed: False
+
+
+# rft
+region_fine_tuning: False #True
+rft_epochs: 20
+rft_batch_size: 32
+
+
+# week retraining: if False, use model state dict from previous week
+week_retrain: True
+week_retrain_epochs: 100
+# skip weeks, train once and use the pretrained model state for the next several weeks
+week_retrain_period: 5
