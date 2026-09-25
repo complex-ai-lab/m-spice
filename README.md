@@ -1,6 +1,6 @@
-# M-SPICE
+# [KDD 2026] M-SPICE: Multimodal SPatIal Context for Epidemic Forecasting
 
-Official implementation of **"Beyond Time Series: Spatial Reasoning for Epidemic Forecasting via Multimodal Learning."**
+Official implementation of ["Beyond Time Series: Spatial Reasoning for Epidemic Forecasting via Multimodal Learning"](https://dl.acm.org/doi/abs/10.1145/3770855.3819015) appearing in KDD 2026.
 
 ## Overview
 
